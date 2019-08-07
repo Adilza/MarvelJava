@@ -1,4 +1,4 @@
-package automacaojava;
+package tests;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
