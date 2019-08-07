@@ -13,7 +13,13 @@ public class InformacoesUsuariosTest {
 		 * Caminho do driver no disco C, executando no Chrome
 		 */
 		System.setProperty("webdriver.chrome.driver", "C://20190711_Automacao//Driver//chromedriver.exe");
+		
+		// Manipulando  pagina web
+		
 		WebDriver navegador = new ChromeDriver();
+		navegador.get("http://www.juliodelima.com.br/taskit");
+		
+		//validando
 		assertEquals(1, 1);
 	}
 }
