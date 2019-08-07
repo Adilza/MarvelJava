@@ -25,5 +25,6 @@ public class InformacoesUsuariosTest {
 		
 		//validando
 		assertEquals(1, 1);
+		//teste
 	}
 }
