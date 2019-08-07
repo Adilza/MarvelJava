@@ -18,7 +18,9 @@ public class InformacoesUsuariosTest {
 		
 		WebDriver navegador = new ChromeDriver();
 		navegador.get("http://www.juliodelima.com.br/taskit");
+		
 		navegador.manage().window().maximize(); 
+		
 		navegador.close();
 		
 		//validando
