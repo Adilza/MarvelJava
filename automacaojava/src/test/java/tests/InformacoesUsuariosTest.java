@@ -11,6 +11,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 
 /**
  * @author Adilza
@@ -76,7 +77,43 @@ public class InformacoesUsuariosTest {
 		WebElement me = navegador.findElement(By.className("me"));
 		String textoNoElementoMe = me.getText();
 		assertEquals("Hi, Julio", textoNoElementoMe);
-
+		
+		/**
+		 * Clicar em um link que possui a class "me"
+		 */
+		navegador.findElement(By.className("me")).click();
+		
+		/**
+		 * Clicar em um link que possui o texto "MORE DATA ABOUT YOU"
+		 */
+		navegador.findElement(By.linkText("MORE DATA ABOUT YOU")).click();
+		/**
+		 * Clicar no botão atraves do seu xpath //button[@data-target="addmoredata"]
+		 */
+		navegador.findElement(By.xpath("//button[@data-target=\"addmoredata\"]")).click();
+		/**
+		 * Identificar  a popup onde esta o formulario de id addmoredata 
+		 */
+		WebElement popupAddMoreData = navegador.findElement(By.id("addmoredata"));
+		/**
+		 * No combo de name "type" escolher a opção "Phone"
+		 */
+		WebElement campoType= popupAddMoreData.findElement(By.name("type"));
+		new Select(campoType).selectByVisibleText("Phone");
+		/**
+		 * No campo de name  "contact" digitar o numero +5571999998888
+		 */
+		popupAddMoreData.findElement(By.name("contact")).sendKeys("+5571988887777");
+		/**
+		 * Clicar no link de text "SAVE" que esta na popup
+		 */
+		popupAddMoreData.findElement(By.linkText("SAVE")).click();
+		/**
+		 * Validar na mensagem de id "toast-container" que o texto é "Your contact has been added!"
+		 */
+		WebElement mensagemPop = navegador.findElement(By.id("toast-container"));
+		String mensagem = mensagemPop.getText();
+		assertEquals("Your contact has been added!", mensagem);
 	}
 
 	@After
