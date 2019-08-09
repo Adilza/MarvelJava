@@ -40,7 +40,7 @@ public class InformacoesUsuariosTest {
 
 	}
 
-	@Test
+//	@Test
 	public void testAdicionarUmaInformacaoAdicionalDoUsuario() {
 
 //		Efetuar login
@@ -77,7 +77,9 @@ public class InformacoesUsuariosTest {
 		WebElement me = navegador.findElement(By.className("me"));
 		String textoNoElementoMe = me.getText();
 		assertEquals("Hi, Julio", textoNoElementoMe);
+	
 		
+//Adicionar mais informações sobre o usuário		
 		/**
 		 * Clicar em um link que possui a class "me"
 		 */
@@ -115,7 +117,12 @@ public class InformacoesUsuariosTest {
 		String mensagem = mensagemPop.getText();
 		assertEquals("Your contact has been added!", mensagem);
 	}
-
+// Remover um contato do usuário
+	@Test
+	public void removerUmContatoDeUmUsuario() {
+		
+	}
+	
 	@After
 	public void tearDown() {
 		/**
