@@ -11,7 +11,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * @author Adilza
@@ -34,15 +37,6 @@ public class InformacoesUsuariosTest {
 		 * Acessando a pagina web
 		 */
 		navegador.get("http://www.juliodelima.com.br/taskit");
-		/**
-		 * 
-		 */
-
-	}
-
-//	@Test
-	public void testAdicionarUmaInformacaoAdicionalDoUsuario() {
-
 //		Efetuar login
 		/**
 		 * Clicar no link "Sign in"
@@ -77,33 +71,38 @@ public class InformacoesUsuariosTest {
 		WebElement me = navegador.findElement(By.className("me"));
 		String textoNoElementoMe = me.getText();
 		assertEquals("Hi, Julio", textoNoElementoMe);
-	
-		
-//Adicionar mais informações sobre o usuário		
 		/**
 		 * Clicar em um link que possui a class "me"
 		 */
 		navegador.findElement(By.className("me")).click();
-		
+
 		/**
-		 * Clicar em um link que possui o texto "MORE DATA ABOUT YOU"
+		 * Clicar em um link que possui o texto "MORE DATA ABOUT YOU"'
 		 */
 		navegador.findElement(By.linkText("MORE DATA ABOUT YOU")).click();
+
+	}
+
+//	@Test
+	public void testAdicionarUmaInformacaoAdicionalDoUsuario() {
+
+		// Adicionar mais informações sobre o usuário
+
 		/**
 		 * Clicar no botão atraves do seu xpath //button[@data-target="addmoredata"]
 		 */
 		navegador.findElement(By.xpath("//button[@data-target=\"addmoredata\"]")).click();
 		/**
-		 * Identificar  a popup onde esta o formulario de id addmoredata 
+		 * Identificar a popup onde esta o formulario de id addmoredata
 		 */
 		WebElement popupAddMoreData = navegador.findElement(By.id("addmoredata"));
 		/**
 		 * No combo de name "type" escolher a opção "Phone"
 		 */
-		WebElement campoType= popupAddMoreData.findElement(By.name("type"));
+		WebElement campoType = popupAddMoreData.findElement(By.name("type"));
 		new Select(campoType).selectByVisibleText("Phone");
 		/**
-		 * No campo de name  "contact" digitar o numero +5571999998888
+		 * No campo de name "contact" digitar o numero +5571999998888
 		 */
 		popupAddMoreData.findElement(By.name("contact")).sendKeys("+5571988887777");
 		/**
@@ -111,18 +110,44 @@ public class InformacoesUsuariosTest {
 		 */
 		popupAddMoreData.findElement(By.linkText("SAVE")).click();
 		/**
-		 * Validar na mensagem de id "toast-container" que o texto é "Your contact has been added!"
+		 * Validar na mensagem de id "toast-container" que o texto é "Your contact has
+		 * been added!"
 		 */
 		WebElement mensagemPop = navegador.findElement(By.id("toast-container"));
 		String mensagem = mensagemPop.getText();
 		assertEquals("Your contact has been added!", mensagem);
 	}
+
 // Remover um contato do usuário
 	@Test
 	public void removerUmContatoDeUmUsuario() {
-		
+		/**
+		 * clicar no elemento pelo x-path
+		 * "//span[text()="+5571988887777"]/following-sibling::a"
+		 */
+		navegador.findElement(By.xpath("//span[text()=\"+5571988887777\"]/following-sibling::a")).click();
+		/**
+		 * Confirmar a janela javascript
+		 */
+		navegador.switchTo().alert().accept();
+		/**
+		 * Validar que a mensagem apresentada foi Rest in peace, dear phone!
+		 */
+		WebElement mensagemPop = navegador.findElement(By.id("toast-container"));
+		String mensagem = mensagemPop.getText();
+		assertEquals("Rest in peace, dear phone!", mensagem);
+		/**
+		 * Aguardar até 10 segundos para que a janela desapareça
+		 */
+		WebDriverWait aguardar = new WebDriverWait(navegador, 10);
+		aguardar.until(ExpectedConditions.stalenessOf(mensagemPop));
+
+		/**
+		 * Clicar no link com o texto logout
+		 */
+		navegador.findElement(By.linkText("logout"));
 	}
-	
+
 	@After
 	public void tearDown() {
 		/**
