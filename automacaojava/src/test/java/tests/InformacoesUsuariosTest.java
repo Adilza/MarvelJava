@@ -36,7 +36,7 @@ public class InformacoesUsuariosTest {
 		 */
 		System.setProperty("webdriver.chrome.driver", "C://20190711_Automacao//Driver//chromedriver.exe");
 		navegador = new ChromeDriver();
-		navegador.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS); // tempo default de espera por elementos na
+		navegador.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS); // tempo default de espera por elementos na
 																			// tela
 		navegador.manage().window().maximize(); // Maximizando a tela
 		/**
@@ -131,7 +131,10 @@ public class InformacoesUsuariosTest {
 		 * clicar no elemento pelo x-path
 		 * "//span[text()="+5571988887777"]/following-sibling::a"
 		 */
-		navegador.findElement(By.xpath("//span[text()=\"+5571988887777\"]/following-sibling::a")).click();
+		
+		navegador.findElement(By.xpath("//span[text()=\'7878\']/following-sibling::a")).click();
+		//navegador.findElement(By.xpath("//*[@id=\'moredata\']/div[1]/ul/li[1]/a/i")).click();
+		
 		/**
 		 * Confirmar a janela javascript
 		 */
@@ -145,8 +148,16 @@ public class InformacoesUsuariosTest {
 		/**
 		 * Tirando um screenshot
 		 */
-		Screenshot.tirar(navegador, "C://Users//Adilza//git//MarvelJava//automacaojava//Test-report//taskit"
-				+ Generator.dataHoraParaArquivo() + test.getMethodName() + ".png");
+		
+		/**Em casa
+		 * Screenshot.tirar(navegador,
+		 * "C://Users//Adilza//git//MarvelJava//automacaojava//Test-report//taskit" +
+		 * Generator.dataHoraParaArquivo() + test.getMethodName() + ".png");
+		 */
+		
+		// No Trabalho
+		Screenshot.tirar(navegador, "C:\\20190711_Automacao\\Test-report\\taskit" +
+				  Generator.dataHoraParaArquivo() + test.getMethodName() + ".png");
 		/**
 		 * Aguardar até 10 segundos para que a janela desapareça
 		 */
@@ -154,9 +165,9 @@ public class InformacoesUsuariosTest {
 		aguardar.until(ExpectedConditions.stalenessOf(mensagemPop));
 
 		/**
-		 * Clicar no link com o texto logout
+		 * Clicar no link com o texto Logout
 		 */
-		navegador.findElement(By.linkText("logout"));
+		navegador.findElement(By.linkText("Logout"));
 	}
 
 	@After
