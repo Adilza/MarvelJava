@@ -4,11 +4,14 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.concurrent.TimeUnit;
 
+import org.easetech.easytest.annotation.DataLoader;
+import org.easetech.easytest.runner.DataDrivenTestRunner;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestName;
+import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -24,6 +27,8 @@ import suporte.Screenshot;
  * @author Adilza
  *
  */
+@RunWith(DataDrivenTestRunner)
+@DataLoader(filePaths= "InformacoesUsuariosTestData.csv")
 public class InformacoesUsuariosTest {
 	private WebDriver navegador;
 	@Rule
@@ -89,7 +94,7 @@ public class InformacoesUsuariosTest {
 
 	}
 
-//	@Test
+	@Test
 	public void testAdicionarUmaInformacaoAdicionalDoUsuario() {
 
 		// Adicionar mais informações sobre o usuário
@@ -125,7 +130,7 @@ public class InformacoesUsuariosTest {
 	}
 
 // Remover um contato do usuário
-	@Test
+//	@Test
 	public void removerUmContatoDeUmUsuario() {
 		/**
 		 * clicar no elemento pelo x-path
@@ -150,6 +155,7 @@ public class InformacoesUsuariosTest {
 		 */
 		
 		/**Em casa
+		 * 
 		 * Screenshot.tirar(navegador,
 		 * "C://Users//Adilza//git//MarvelJava//automacaojava//Test-report//taskit" +
 		 * Generator.dataHoraParaArquivo() + test.getMethodName() + ".png");
