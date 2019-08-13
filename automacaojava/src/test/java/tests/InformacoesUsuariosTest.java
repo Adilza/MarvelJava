@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import java.util.concurrent.TimeUnit;
 
 import org.easetech.easytest.annotation.DataLoader;
+import org.easetech.easytest.annotation.Param;
 import org.easetech.easytest.runner.DataDrivenTestRunner;
 import org.junit.After;
 import org.junit.Before;
@@ -27,7 +28,7 @@ import suporte.Screenshot;
  * @author Adilza
  *
  */
-@RunWith(DataDrivenTestRunner)
+@RunWith(DataDrivenTestRunner.class)
 @DataLoader(filePaths= "InformacoesUsuariosTestData.csv")
 public class InformacoesUsuariosTest {
 	private WebDriver navegador;
@@ -95,7 +96,8 @@ public class InformacoesUsuariosTest {
 	}
 
 	@Test
-	public void testAdicionarUmaInformacaoAdicionalDoUsuario() {
+	public void testAdicionarUmaInformacaoAdicionalDoUsuario(@Param(name="tipo")String tipo, 
+			@Param(name="contato")String contato, @Param(name="mensagemEsperada")String mensagemEsperada) {
 
 		// Adicionar mais informações sobre o usuário
 
@@ -111,11 +113,11 @@ public class InformacoesUsuariosTest {
 		 * No combo de name "type" escolher a opção "Phone"
 		 */
 		WebElement campoType = popupAddMoreData.findElement(By.name("type"));
-		new Select(campoType).selectByVisibleText("Phone");
+		new Select(campoType).selectByVisibleText(tipo);
 		/**
 		 * No campo de name "contact" digitar o numero +5571999998888
 		 */
-		popupAddMoreData.findElement(By.name("contact")).sendKeys("+5571988887777");
+		popupAddMoreData.findElement(By.name("contact")).sendKeys(contato);
 		/**
 		 * Clicar no link de text "SAVE" que esta na popup
 		 */
@@ -126,7 +128,7 @@ public class InformacoesUsuariosTest {
 		 */
 		WebElement mensagemPop = navegador.findElement(By.id("toast-container"));
 		String mensagem = mensagemPop.getText();
-		assertEquals("Your contact has been added!", mensagem);
+		assertEquals(mensagemEsperada, mensagem);
 	}
 
 // Remover um contato do usuário
