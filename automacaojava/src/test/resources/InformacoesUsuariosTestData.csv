@@ -1,4 +1,4 @@
-testAdicionarUmaInformacaoAdicionalDoUsuario,tipo,contato,mensagemEsperada
-											, Phone, +5571988644317,Your contact has been added!
-											, Phone, +5571988644311,Your contact has been added!
-											, Phone, +5571988644314,Your contact has been added!					
+testAdicionarUmaInformacaoAdicionalDoUsuario,tipo,contato,mensagem
+											,Phone,+5571988644321,Your contact has been added!
+											,Phone,+5571988644322,Your contact has been added!
+											,Phone,+5571988644323,Your contact has been added!
