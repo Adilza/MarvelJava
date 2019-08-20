@@ -9,7 +9,7 @@ public class LoginPage extends BasePage {
 		// TODO Auto-generated constructor stub
 	}
 
-	private WebDriver navegador;
+//	private WebDriver navegador;
 
 	public LoginFormPage clicarSignIn() {
 		navegador.findElement(By.linkText("Sign in")).click();
@@ -17,3 +17,5 @@ public class LoginPage extends BasePage {
 		return new LoginFormPage(navegador);
 	} 
 }
+
+

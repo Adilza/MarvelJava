@@ -23,6 +23,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import suporte.Generator;
 import suporte.Screenshot;
+import suporte.Web;
 
 /**
  * @author Adilza
@@ -37,18 +38,8 @@ public class InformacoesUsuariosTest {
 
 	@Before
 	public void setUp() {
-		/**
-		 * Caminho do driver no disco C, executando no Chrome; Abrindo o navegador
-		 */
-		System.setProperty("webdriver.chrome.driver", "C://20190711_Automacao//Driver//chromedriver.exe");
-		navegador = new ChromeDriver();
-		navegador.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS); // tempo default de espera por elementos na
-																			// tela
-		navegador.manage().window().maximize(); // Maximizando a tela
-		/**
-		 * Acessando a pagina web
-		 */
-		navegador.get("http://www.juliodelima.com.br/taskit");
+		navegador = Web.createChrome();
+		
 //		Efetuar login
 		/**
 		 * Clicar no link "Sign in"
@@ -123,8 +114,7 @@ public class InformacoesUsuariosTest {
 		 */
 		popupAddMoreData.findElement(By.linkText("SAVE")).click();
 		/**
-		 * Validar na mensagem de id "toast-container" que o texto é "Your contact has
-		 * been added!"
+		 * Validar na mensagem de id "toast-container" que o texto é "Your contact has been added!"
 		 */
 		WebElement mensagemPop = navegador.findElement(By.id("toast-container"));
 		String mensagem = mensagemPop.getText();

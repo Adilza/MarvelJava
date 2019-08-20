@@ -20,4 +20,16 @@ public class MePage extends BasePage {
 		
 		return new AddContactPage(navegador);
 	}
+	
+	public MePage clicarLinkRemoverContato(String telefone) {
+		navegador.findElement(By.xpath("//span[text()=\"" + telefone + "\"]/following-sibling::a")).click();
+		
+		return this;
+	}
+	
+	public MePage aceitarAlerta() {
+		 navegador.switchTo().alert().accept();
+		 
+		 return this;
+	}
 }

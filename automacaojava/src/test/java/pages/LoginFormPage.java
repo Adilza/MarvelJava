@@ -30,12 +30,10 @@ public class LoginFormPage extends BasePage {
 	}
 
 	// Metodo Funcional
-	public SecretaPage fazerLogin(String login, String password) {
-		navegador.findElement(By.id("signinbox")).findElement(By.name("login")).sendKeys(login);
-		navegador.findElement(By.id("signinbox")).findElement(By.name("password")).sendKeys(password);
-		navegador.findElement(By.linkText("SIGN IN")).click();
-
-		return new SecretaPage(navegador);
+	public SecretaPage fazerLogin(String login, String senha) {
+		return digitarLogin(login)
+				.digitarPassword(senha)
+				.clicarSignIn();
 	}
 
 }

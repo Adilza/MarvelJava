@@ -13,8 +13,7 @@ public class Web {
 		System.setProperty("webdriver.chrome.driver", "C://Windows//chromedriver.exe");
 	
 		WebDriver navegador = new ChromeDriver();
-		navegador.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS); // tempo default de espera por elementos na
-																			// tela
+		navegador.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS); // tempo default de espera por elementos na tela
 		navegador.manage().window().maximize(); // Maximizando a tela
 		/**
 		 * Acessando a pagina web

@@ -1,0 +1,11 @@
+testAdicionarUmaInformacaoAdicionalDoUsuario,login,senha,tipo,contato,mensagem
+											,julio0001,123456,Phone,+5571988644321,Your contact has been added!
+											,julio0001,123456,Phone,+5571988644322,Your contact has been added!
+											,julio0001,123456,E-mail,teste@gmail.com,Your contact has been added!
+											
+
+
+
+removerUmContatoDeUmUsuario,telefone,mensagem
+                           ,+5571988644321,"Rest in peace, dear phone!"
+                           ,+5571988644322,"Rest in peace, dear phone!"
