@@ -30,7 +30,7 @@ import suporte.Web;
  *
  */
 @RunWith(DataDrivenTestRunner.class)
-@DataLoader(filePaths= "InformacoesUsuariosTestData.csv")
+@DataLoader(filePaths = "InformacoesUsuariosTestData.csv")
 public class InformacoesUsuariosTest {
 	private WebDriver navegador;
 	@Rule
@@ -39,7 +39,7 @@ public class InformacoesUsuariosTest {
 	@Before
 	public void setUp() {
 		navegador = Web.createChrome();
-		
+
 //		Efetuar login
 		/**
 		 * Clicar no link "Sign in"
@@ -87,8 +87,8 @@ public class InformacoesUsuariosTest {
 	}
 
 	@Test
-	public void testAdicionarUmaInformacaoAdicionalDoUsuario(@Param(name="tipo")String tipo, 
-			@Param(name="contato")String contato, @Param(name="mensagemEsperada")String mensagemEsperada) {
+	public void testAdicionarUmaInformacaoAdicionalDoUsuario(@Param(name = "tipo") String tipo,
+			@Param(name = "contato") String contato, @Param(name = "mensagem") String mensagemEsperada) {
 
 		// Adicionar mais informações sobre o usuário
 
@@ -114,7 +114,8 @@ public class InformacoesUsuariosTest {
 		 */
 		popupAddMoreData.findElement(By.linkText("SAVE")).click();
 		/**
-		 * Validar na mensagem de id "toast-container" que o texto é "Your contact has been added!"
+		 * Validar na mensagem de id "toast-container" que o texto é "Your contact has
+		 * been added!"
 		 */
 		WebElement mensagemPop = navegador.findElement(By.id("toast-container"));
 		String mensagem = mensagemPop.getText();
@@ -128,10 +129,10 @@ public class InformacoesUsuariosTest {
 		 * clicar no elemento pelo x-path
 		 * "//span[text()="+5571988887777"]/following-sibling::a"
 		 */
-		
+
 		navegador.findElement(By.xpath("//span[text()=\'7878\']/following-sibling::a")).click();
-		//navegador.findElement(By.xpath("//*[@id=\'moredata\']/div[1]/ul/li[1]/a/i")).click();
-		
+		// navegador.findElement(By.xpath("//*[@id=\'moredata\']/div[1]/ul/li[1]/a/i")).click();
+
 		/**
 		 * Confirmar a janela javascript
 		 */
@@ -145,17 +146,18 @@ public class InformacoesUsuariosTest {
 		/**
 		 * Tirando um screenshot
 		 */
-		
-		/**Em casa
+
+		/**
+		 * Em casa
 		 * 
 		 * Screenshot.tirar(navegador,
 		 * "C://Users//Adilza//git//MarvelJava//automacaojava//Test-report//taskit" +
 		 * Generator.dataHoraParaArquivo() + test.getMethodName() + ".png");
 		 */
-		
+
 		// No Trabalho
-		Screenshot.tirar(navegador, "C:\\20190711_Automacao\\Test-report\\taskit" +
-				  Generator.dataHoraParaArquivo() + test.getMethodName() + ".png");
+		Screenshot.tirar(navegador, "C:\\20190711_Automacao\\Test-report\\taskit" + Generator.dataHoraParaArquivo()
+				+ test.getMethodName() + ".png");
 		/**
 		 * Aguardar até 10 segundos para que a janela desapareça
 		 */
