@@ -31,7 +31,8 @@ public class InformacoesUsuarioPageObjectsTest {
 
 	@Before
 	public void setUp() {
-		navegador = Web.createChrome();
+		//navegador = Web.createChrome();
+		navegador = Web.createBrowserStack(); //na nuvem
 	}
 
 	@Test
